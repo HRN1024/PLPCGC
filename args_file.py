@@ -24,13 +24,15 @@ parser.add_argument('--NN', type=bool, help='Whether using nearest neighbor poin
 parser.add_argument('--max_steps', type=int, help='Train up to this number of steps.',
                     default=40002)
 # for compress.py and decompress.py
-parser.add_argument('--test_data', help='The path of test data.',
+parser.add_argument('--test_data', help='Point clouds glob pattern for compression.',
                     default='.../SemanticKiTTI/dataset/sequences/08/velodyne_ply_mini/*.ply')
-parser.add_argument('--trained_ae', help='The trained entropy autoencoder.', default='./trained_model/ae1000.pkl')
-parser.add_argument('--trained_prob', help='The trained entropy model.', default='./trained_model/prob1000.pkl')
-parser.add_argument('--compressed_path', help='Path to save the comressed .bin files.', default='.../compress_path')
+parser.add_argument('--trained_ae', help='Path to the trained entropy autoencoder.', default='./trained_model/ae40000.pkl')
+parser.add_argument('--trained_prob', help='Path to the trained entropy model.', default='./trained_model/prob40000.pkl')
+parser.add_argument('--compressed_path', help='Path to save the compressed .bin files.', default='.../compress_path')
 parser.add_argument('--decompressed_path', help='Path to save the decompressed .ply files.',
                     default='.../decompress_path')
 parser.add_argument('--device', help='AE Model Device (cpu or cuda)', default='cuda')
 
 args = parser.parse_args()
+
+

@@ -7,7 +7,7 @@ This is the implementation of the paper "Patch-wise LiDAR Point Cloud Geometry C
 
 Set the following argument in args_file.py:
 
-`parser.add_argument('--data_path', help='* The path of SemanticKITTI', default='.../SemanticKiTTI/dataset/sequences')
+`parser.add_argument('--data_path', help='Path to SemanticKITTI dataset', default='.../SemanticKiTTI/dataset/sequences')
 `
 *  Adjust the following arguents to achieve different compression ratio
 
@@ -29,13 +29,13 @@ Set the following arguments in args_file.py:
                     default='.../SemanticKiTTI/dataset/sequences/08/velodyne_ply_mini/*.ply')
 `
 
-`parser.add_argument('--trained_ae', help='The trained entropy autoencoder.', default='./trained_model/ae2000.pkl')
+`parser.add_argument('--trained_ae', help='Path to the trained entropy autoencoder.', default='./trained_model/ae40000.pkl')
 `
 
-`parser.add_argument('--trained_prob', help='The trained entropy model.', default='./trained_model/prob2000.pkl')
+`parser.add_argument('--trained_prob', help='Path to the trained entropy model.', default='./trained_model/prob40000.pkl')
 `
 
-`parser.add_argument('--compressed_path', help='Path to save the comressed .bin files.', default='.../compress_path')
+`parser.add_argument('--compressed_path', help='Path to save the compressed .bin files.', default='.../compress_path')
 `
 
 ## Decompress
