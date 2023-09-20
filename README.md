@@ -1,4 +1,4 @@
-# Patch-wise LiDAR Point Cloud Geometry Compression based on Autoencode
+# Patch-wise LiDAR Point Cloud Geometry Compression based on Autoencoder
 
 This is the implementation of the paper "Patch-wise LiDAR Point Cloud Geometry Compression based on Autoencoder"(ICIG 2023).
 
