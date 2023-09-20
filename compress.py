@@ -34,14 +34,13 @@ with torch.no_grad():
     for i in tqdm(range(files.shape[0])):
 
         path = files[i]
-        # path='/home/hrn/dataset/SemanticKiTTI/dataset/sequences/08/velodyne_ply_mini/002156.ply'
 
         points = load_ply_vtx(files[i])  # .ply
         # points = np.fromfile(path, dtype=np.float32).reshape(-1, 4) # .bin
         point_xyz = points[:, :3]  # x, y, z
         point_num = point_xyz.shape[0]
 
-        # =====================分块=======================
+
         # Randomly selete points to pad or sample the point cloud
         patch_num_target = (point_num // args.patch_point_num)
         if point_num % args.patch_point_num != 0:
@@ -85,7 +84,7 @@ with torch.no_grad():
                                                   return_nn=True)
         else:
             sample_point = sample_point.unsqueeze(2)
-        # =====================================================================
+
 
         sample_point = sample_point.half()
         xyzs_size = sample_point.shape[0] * sample_point.shape[2] * 16 * 3
