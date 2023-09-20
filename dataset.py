@@ -18,7 +18,7 @@ class CompressDataset(Dataset):
     def __getitem__(self, index):
         pc_path = self.pc_data_path[index]
         point_xyz = np.fromfile(pc_path, dtype=np.float32).reshape(-1, 4)
-        point_xyz = point_xyz[:, :3]  # x, y, z
+        point_xyz = point_xyz[:, :3]   
 
         original_num = point_xyz.shape[0]
         if original_num < 110000:
@@ -30,7 +30,7 @@ class CompressDataset(Dataset):
         # Randomly selete points to pad or sample the point cloud
         if original_num < patches_total_num:  # padding
             padding_num = patches_total_num - original_num
-            index = np.random.choice(range(original_num), padding_num, replace=False)  # 点数不够
+            index = np.random.choice(range(original_num), padding_num, replace=False)   
             point_xyz = np.vstack([point_xyz, point_xyz[index, :]])
         elif original_num > patches_total_num:  # sampling
             point_xyz = point_xyz[:patches_total_num]
