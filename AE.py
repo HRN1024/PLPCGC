@@ -50,8 +50,7 @@ class Decoder(nn.Module):
 
     def forward(self, latent_quantized_trans):
         mlp_output = self.MLP_layers(latent_quantized_trans)
-        mlp_output = mlp_output.view(latent_quantized_trans.shape[0], -1, self.patch_point_num)  # [分块数,特征维数,输出点数]
-
+        mlp_output = mlp_output.view(latent_quantized_trans.shape[0], -1, self.patch_point_num)  
         latent_quantized = latent_quantized_trans.unsqueeze(-1).repeat((1, 1, self.patch_point_num))
         smlp_input = torch.cat((mlp_output, latent_quantized), dim=1)
         smlp_input = smlp_input.unsqueeze(-1)  # [B, C, N, 1]
