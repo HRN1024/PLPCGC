@@ -18,7 +18,7 @@ if not os.path.exists(args.decompressed_path):
     os.makedirs(args.decompressed_path)
 
 column_dict = {'30': 5, '64': 8, '128': 8, '256': 16, '512': 32, '1024': 128, '2048': 128, '4096': 128,
-               '6400': 128, '8192': 128}  # 一个环形点云包含的分块数量
+               '6400': 128, '8192': 128}  
 files = np.array(sorted(glob(args.test_data, recursive=True)))[:10]
 filenames = np.array([os.path.split(x)[1] for x in files])
 
@@ -47,7 +47,7 @@ with torch.no_grad():
         if point_num % args.patch_point_num != 0:
             patch_num_target = (point_num // args.patch_point_num + 1)
             padding_num = patch_num_target * args.patch_point_num - point_num
-            index = np.random.choice(range(point_num), padding_num, replace=False)  # 点数不够
+            index = np.random.choice(range(point_num), padding_num, replace=False)  
             point_xyz = np.vstack([point_xyz, point_xyz[index, :]])
         # sort the point cloud by distance
         dist = np.sum(point_xyz ** 2, 1)
@@ -58,7 +58,7 @@ with torch.no_grad():
         patch_num = 0
         patches = []  # all patches
         for r in range(0, patch_num_target // column + 1):  #  patch_num*patch_point_num
-            PC_annular = point_xyz[r * ae.patch_point_num * column:(r + 1) * ae.patch_point_num * column]  # 一个环
+            PC_annular = point_xyz[r * ae.patch_point_num * column:(r + 1) * ae.patch_point_num * column]  
             yaw_angle = np.arctan2(PC_annular[:, 1], PC_annular[:, 0])
             index_sort = np.argsort(yaw_angle)
             PC_annular_sort = PC_annular[index_sort, :]  # sort the annular PC by yaw angle
