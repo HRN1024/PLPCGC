@@ -9,7 +9,7 @@ Set the following argument in args_file.py:
 
 `parser.add_argument('--data_path', help='Path to SemanticKITTI dataset', default='.../SemanticKiTTI/dataset/sequences')
 `
-*  Adjust the following arguents to achieve different compression ratio
+*  Adjust the following arguments to achieve a different compression ratio
 
 `parser.add_argument('--patch_num', type=int, help=' ', default=2048)`
 
